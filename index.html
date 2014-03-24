@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<script src="KeyboardJS-master/keyboard.js"> </script>
+<body>
+
+<center>
+	<canvas id="myCanvas" width="800" height="400" id="myCanvas" style="border:1px solid #000000;">Your browser does not support the HTML5 canvas tag.</canvas>
+</center>
+
+
+
+<script>
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+ctx.beginPath();
+ctx.arc(41,50,40,0,2*Math.PI);
+ctx.stroke();
+
+KeyboardJS.on('up', function() { console.log('up'); alert("up up! ;D"); });
+KeyboardJS.on('down', function() { console.log('down'); });
+KeyboardJS.on('left', function() { console.log('right'); });
+KeyboardJS.on('right', function() { console.log('left'); });
+</script>
+
+</body>
+</html>
