@@ -10,16 +10,56 @@
 
 
 <script>
+var x = 40; var y = 40;
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
+var clearPreviousCircle = function() {
+	ctx.save();
+    ctx.globalCompositeOperation = 'destination-out';
+    ctx.beginPath();
+    ctx.arc(x, y, 42, 0, 2 * Math.PI, false);
+    ctx.fill();
+    ctx.restore();
+	
+};
+var paintNewCircle = function() {
+	ctx.beginPath();
+	ctx.strokeStyle = "#000000";
+	ctx.arc(x,y,40,0,2*Math.PI);
+	ctx.stroke();
+};
+
 ctx.beginPath();
-ctx.arc(41,50,40,0,2*Math.PI);
+ctx.arc(x,y,40,0,2*Math.PI);
+
 ctx.stroke();
 
-KeyboardJS.on('up', function() { console.log('up'); alert("up up! ;D"); });
-KeyboardJS.on('down', function() { console.log('down'); });
-KeyboardJS.on('left', function() { console.log('right'); });
-KeyboardJS.on('right', function() { console.log('left'); });
+KeyboardJS.on('up', function() {
+	console.log('up');
+	clearPreviousCircle();
+	y = y-12;
+	paintNewCircle();
+});
+KeyboardJS.on('down', function() {
+	console.log('down');
+	clearPreviousCircle();
+	y = y+12;
+	paintNewCircle();
+});
+KeyboardJS.on('left', function() {
+	console.log('right');
+	clearPreviousCircle();
+	x = x-12;
+	paintNewCircle();
+});
+KeyboardJS.on('right', function() {
+	console.log('left');
+	clearPreviousCircle();
+	x = x+12;
+	paintNewCircle();
+});
+
+
 </script>
 
 </body>
